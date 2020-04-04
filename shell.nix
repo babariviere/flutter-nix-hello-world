@@ -1,10 +1,12 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ sources ? import ./nix/sources.nix }:
 
 let
-  flutter = (import (builtins.fetchTarball
-    "https://github.com/babariviere/nixpkgs/archive/flutter-init.tar.gz") {}).flutter;
+  pkgs = import sources.nixpkgs {};
+  android = pkgs.callPackage ./nix/android.nix { };
 in pkgs.mkShell {
-  buildInputs = [ flutter ];
+  buildInputs = [ pkgs.flutter pkgs.jdk android.platform-tools ];
 
-  ANDROID_HOME = "${pkgs.androidsdk_9_0}/libexec/android-sdk";
+  ANDROID_HOME = "${android.androidsdk}/libexec/android-sdk";
+  JAVA_HOME = pkgs.jdk;
+  ANDROID_AVD_HOME = (toString ./.) + "/.android/avd";
 }
