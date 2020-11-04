@@ -47,6 +47,18 @@ in pkgs.mkShell {
 
 After this, enter into your nix-shell and you are good to go.
 
+## Updating
+
+### To update the whole environment, do the following in order:
+
+- `niv init` will update nix/sources.nix if a new one is available
+- Make sure you have a backup of your nix/sources.json. If you're not in a git repo or use another vcs: `cp nix/sources.json nix/sources.json.bak`
+- `niv update` will update sources.json i.e. your version of nixpkgs used in this environment
+  - you may need to edit nix/android.nix if any of the attributes in there can't be found after this.
+- `direnv reload` will rebuild/reload your environment (may not be necessary if it automatically reloads)
+  - alternatively, run `nix-shell` again (?) 
+- `flutter packages update` to update flutter/dart packages and get rid of the warning that you're using a different version of flutter than what was last referenced 
+
 ## Global install
 
 If you want to install `flutter` on your system, add this to your `/etc/nixos/configuration.nix`:
