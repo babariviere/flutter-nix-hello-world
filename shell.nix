@@ -1,7 +1,6 @@
-{ sources ? import ./nix/sources.nix }:
+{ pkgs ? import <nixpkgs> { config.android_sdk.accept_license = true; } }:
 
 let
-  pkgs = import sources.nixpkgs { config.android_sdk.accept_license = true;};
   android = pkgs.callPackage ./nix/android.nix { };
 in pkgs.mkShell {
   buildInputs = with pkgs; [

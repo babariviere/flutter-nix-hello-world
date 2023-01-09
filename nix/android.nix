@@ -1,18 +1,19 @@
 { androidenv }:
 
 androidenv.composeAndroidPackages {
-  toolsVersion = "25.2.5";
-  platformToolsVersion = "29.0.6";
-  buildToolsVersions = [ "28.0.3" ];
-  includeEmulator = true;
-  emulatorVersion = "30.0.3";
-  platformVersions = [ "28" ];
+  toolsVersion = "26.1.1";
+  platformToolsVersion = "33.0.3";
+  buildToolsVersions = [ "30.0.3" ];
+  includeEmulator = false;
+  emulatorVersion = "30.3.4";
+  platformVersions = [ "28" "29" "30" ];
   includeSources = false;
-  includeDocs = false;
-  includeSystemImages = true;
-  systemImageTypes = [ "default" ];
-  abiVersions = [ "x86_64" ];
-  includeNDK = false;
+  includeSystemImages = false;
+  systemImageTypes = [ "google_apis_playstore" ];
+  abiVersions = [ "armeabi-v7a" "arm64-v8a" ];
+  cmakeVersions = [ "3.10.2" ];
+  includeNDK = true;
+  ndkVersions = [ "22.0.7026061" ];
   useGoogleAPIs = false;
   useGoogleTVAddOns = false;
 }
