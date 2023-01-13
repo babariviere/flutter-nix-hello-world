@@ -1,70 +1,16 @@
-# Hello World application with Flutter + Nix
+# hello_world
 
-This is a demonstration project to show usage of Flutter with Nix.
+A new Flutter project.
 
 ## Getting Started
 
-If you have `direnv` installed, run:
+This project is a starting point for a Flutter application.
 
-```sh
-direnv allow
-```
+A few resources to get you started if this is your first Flutter project:
 
-Otherwise, enter in the `nix-shell`:
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-```sh
-nix-shell
-```
-
-After this, you can either build this project with:
-
-```sh
-flutter build apk
-```
-
-Or run it:
-
-```sh
-flutter run
-```
-
-If you have any issue, you can run `flutter doctor` to get a diagnostic and potential solution to fix your issues.
-
-## How to use it with your projects
-
-Create a `shell.nix` file with this content:
-
-```nix
-{ pkgs ? import <nixpkgs> {} }:
-
-pkgs.mkShell {
-  buildInputs = [ pkgs.flutter ];
-}
-```
-
-After this, enter into your nix-shell and you are good to go.
-
-## Updating
-
-### To update the whole environment, do the following in order:
-
-- `nix flake update` will update flake.lock
-- `direnv reload` will rebuild/reload your environment (may not be necessary if it automatically reloads)
-  - alternatively, run `nix develop` again (?)
-- `flutter packages update` to update flutter/dart packages and get rid of the warning that you're using a different version of flutter than what was last referenced
-
-## Global install
-
-If you want to install `flutter` on your system, add this to your `/etc/nixos/configuration.nix`:
-
-```nix
-{
-  environment.systemPackages = [
-    pkgs.flutter
-  ];
-}
-```
-
-## Have an issue ?
-
-Create an issue on this repository with your issue and I will try to help you as much as I can !
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
