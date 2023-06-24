@@ -14,3 +14,21 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Usage
+
+If you are using `nix flake`, you can simply do:
+
+```sh
+nix develop
+flutter build apk
+flutter run
+```
+
+If you are still using `nix-shell`, then:
+
+```sh
+nix-shell .
+flutter build apk
+flutter run
+```
