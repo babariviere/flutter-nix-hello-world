@@ -1,16 +1,10 @@
-{ pkgs ? import <nixpkgs> { config.android_sdk.accept_license = true; } }:
-
-let
-  android = pkgs.callPackage ./nix/android.nix { };
-in pkgs.mkShell {
-  buildInputs = with pkgs; [
-    # from pkgs
-    flutter
-    jdk11
-    #from ./nix/*
-    android.platform-tools ];
-
-  ANDROID_HOME = "${android.androidsdk}/libexec/android-sdk";
-  JAVA_HOME = pkgs.jdk11;
-  ANDROID_AVD_HOME = (toString ./.) + "/.android/avd";
-}
+(import
+  (
+    let lock = builtins.fromJSON (builtins.readFile ./flake.lock); in
+    fetchTarball {
+      url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+      sha256 = lock.nodes.flake-compat.locked.narHash;
+    }
+  )
+  { src = ./.; }
+).shellNix
