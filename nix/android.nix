@@ -2,11 +2,11 @@
 
 androidenv.composeAndroidPackages {
   toolsVersion = "26.1.1";
-  platformToolsVersion = "33.0.3";
+  platformToolsVersion = "34.0.5";
   buildToolsVersions = [ "30.0.3" ];
   includeEmulator = false;
-  emulatorVersion = "30.3.4";
-  platformVersions = [ "28" "29" "30" "31" ];
+  emulatorVersion = "34.1.9";
+  platformVersions = [ "28" "29" "30" "31" "32" "33" "34" ];
   includeSources = false;
   includeSystemImages = false;
   systemImageTypes = [ "google_apis_playstore" ];
